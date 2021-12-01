@@ -1,6 +1,6 @@
 # final_project
 # 597 PR final project
-# Created by Shihao Jin, Frencis Feng, Yanmeng Xin
+# Created by Shihao Jin, Francis Feng, Yanmeng Xin
 
 import random as random
 import pandas as pd
