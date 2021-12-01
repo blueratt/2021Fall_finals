@@ -278,7 +278,7 @@ def main():
         spend = data[data["revenue-cost"] == data["revenue-cost"].max()]["spend_time/days"].values[0]
         verifyHypothesis_4.append(spend)
 
-        # verify Hypothesis 5
+        # verify Hypothesis  5
         is_dubbing = data[data["revenue-cost"] == data["revenue-cost"].max()]["is_dubbing"].values[0]
         verifyHypothesis_5.append(is_dubbing)
 
