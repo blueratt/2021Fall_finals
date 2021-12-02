@@ -101,7 +101,7 @@ def calculate_during_effect(data):
         cost[i] *= (cost_increase + 1)
     data["revenue"] = revenue
     data["cost"] = cost
-    data["length/mins"] = pd.DataFrame(length)
+    data["length_per_min"] = pd.DataFrame(length)
 
     # random increase cost and revenue
 
@@ -134,7 +134,7 @@ def is_over_budget(data):
         revenue = np.copy(data["revenue"])
         cost = np.copy(data["cost"])
         celebrity = np.copy(data["celebrity"])
-        length = np.copy(data["length/mins"])
+        length = np.copy(data["length_per_min"])
         spend_time = np.copy(data["spend_time/days"])
         is_dubbing = np.copy(data["is_dubbing"])
         for i in range(1000):
@@ -158,13 +158,13 @@ def is_over_budget(data):
         revenue = np.copy(data["revenue"])
         cost = np.copy(data["cost"])
         celebrity = np.copy(data["celebrity"])
-        length = np.copy(data["length/mins"])
+        length = np.copy(data["length_per_min"])
         spend_time = np.copy(data["spend_time/days"])
         is_dubbing = np.copy(data["is_dubbing"])
         revenue_decrease = 0
         for i in range(1000):
             if revenue[i] < cost[i]:
-                if length[i] > 120 and length[i] < 110:
+                if 120 < length[i] < 110:
                     revenue_decrease += 0.1
                 if celebrity[i] < 10:
                     revenue_decrease += 0.1
@@ -254,53 +254,53 @@ def main():
     # Monte Carlo simulation
     monte_carlo_iterator = 100
 
-    verifyHypothesis_1 = []
-    verifyHypothesis_2 = []
-    verifyHypothesis_3 = []
-    verifyHypothesis_4 = []
-    verifyHypothesis_5 = []
+    verify_hypothesis_1 = []
+    verify_hypothesis_2 = []
+    verify_hypothesis_3 = []
+    verify_hypothesis_4 = []
+    verify_hypothesis_5 = []
     for i in range(monte_carlo_iterator):
         data = init_data()
         data["revenue-cost"] = data["revenue"] - data["cost"]
         # verify Hypothesis 1
-        verifyHypothesis_1.append(data[data["revenue-cost"] == data["revenue-cost"].max()]["celebrity"].values[0])
+        verify_hypothesis_1.append(data[data["revenue-cost"] == data["revenue-cost"].max()]["celebrity"].values[0])
 
         # verify Hypothesis 2
         type = data[data["revenue-cost"] == data["revenue-cost"].max()]["movie_type"].values
         count = data[data["movie_type"] == type[0]].shape[0]
-        verifyHypothesis_2.append(count / 1000)
+        verify_hypothesis_2.append(count / 1000)
 
         # verify Hypothesis 3
-        length = data[data["revenue-cost"] == data["revenue-cost"].max()]["length/mins"].values[0]
-        verifyHypothesis_3.append(length)
+        length = data[data["revenue-cost"] == data["revenue-cost"].max()]["length_per_min"].values[0]
+        verify_hypothesis_3.append(length)
 
         # verify Hypothesis 4
         spend = data[data["revenue-cost"] == data["revenue-cost"].max()]["spend_time/days"].values[0]
-        verifyHypothesis_4.append(spend)
+        verify_hypothesis_4.append(spend)
 
         # verify Hypothesis  5
         is_dubbing = data[data["revenue-cost"] == data["revenue-cost"].max()]["is_dubbing"].values[0]
-        verifyHypothesis_5.append(is_dubbing)
+        verify_hypothesis_5.append(is_dubbing)
 
     x = range(monte_carlo_iterator)
     plt.title("Hypothesis 1")
-    plt.plot(x, verifyHypothesis_1)
+    plt.plot(x, verify_hypothesis_1)
     plt.show()
 
     plt.title("Hypothesis 2")
-    plt.plot(x, verifyHypothesis_2)
+    plt.plot(x, verify_hypothesis_2)
     plt.show()
 
     plt.title("Hypothesis 3")
-    plt.plot(x, verifyHypothesis_3)
+    plt.plot(x, verify_hypothesis_3)
     plt.show()
 
     plt.title("Hypothesis 4")
-    plt.plot(x, verifyHypothesis_4)
+    plt.plot(x, verify_hypothesis_4)
     plt.show()
 
     plt.title("Hypothesis 5")
-    plt.plot(x, verifyHypothesis_5)
+    plt.plot(x, verify_hypothesis_5)
     plt.show()
 
 
