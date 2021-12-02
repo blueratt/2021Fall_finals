@@ -30,8 +30,10 @@ We have designed 5 hypotheses to illustrate this project:
 
 
    #### 4.	The film production (editing time of the movie) costs no longer than 90 days will maximize the profit.
+   We assume that the spend time of the movie in days can affect the profit of movies. And plot as follows:
 
    #### 5.  Original voice dubbing of movie actors will also lead to the maximum of the movie.
+   We assume that whether the movie is dubbing can affect the profit of movies. And plot as follows:
 
 ### Phase 3 Analysis:
 Because the Monte Carlo method can truly simulate the actual physical process, the problem solving is very consistent with the reality, and very satisfactory results can be obtained. According to the results of the discrete graph obtained from the five hypotheses, we can support Hypothesis 5 and Hypothesis 2, that is, the type of movie and whether the movie is dubbing will affect the profit of the movie. And refuse to accept assumptions 1, 3, 4 that the length of the movie, the time spent on the movie, and the Celebrity of the movie will not affect the profit of the movie.
