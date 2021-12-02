@@ -2,19 +2,20 @@
 # 597 PR final project
 # Created by Shihao Jin, Francis Feng, Yanmeng Xin
 
-import random as random
+# import random as random
 import pandas as pd
-import scipy.stats
+# import scipy.stats
 import numpy as np
 from matplotlib import pyplot as plt
 
 
 def get_base_cost_for_movie(index, cost_revenue):
     """
-        determine the base revenue and cost for each genre of movies which have different base revenue and cost
-        :param movie_type:
-        :return:
-        """
+    determine the base revenue and cost for each genre of movies which have different base revenue and cost
+    :param cost_revenue:
+    :param index:
+    :return:
+    """
     type_list = ['action', 'comedy', 'drama', 'fantasy', 'horror', 'mystery', 'romance', 'crime', 'animation',
                  'thriller']
     res = []
@@ -57,12 +58,12 @@ def get_base_cost_for_movie(index, cost_revenue):
 
 def define_cost_revenue(indexlist):
     """
-       Any type of movie exceeds 30% of total portfolio will lead to a decrease in the base
-revenue because of over-competition, and lower than 5% will increase the base revenue
-because of lack of competition
-        :param movie_type:
-        :return:
-        """
+    Any type of movie exceeds 30% of total portfolio will lead to a decrease in the base
+    revenue because of over-competition, and lower than 5% will increase the base revenue
+    because of lack of competition
+    :param indexlist:
+    :return:
+    """
     cost_revenue = [[100, 90], [90, 70], [100, 80],
                     [120, 110], [130, 100], [100, 100],
                     [90, 90], [120, 100], [100, 90], [100, 100]]
@@ -77,8 +78,7 @@ because of lack of competition
 def calculate_during_effect(data):
     """
     calculate how the movie duration will change the revenue and cost
-    :param movie_price:
-    :param length:
+    :param data:
     :return:
     """
     # for sake of the minimum length of 60 minutes for each movie
@@ -90,7 +90,7 @@ def calculate_during_effect(data):
         if length_increase < 30:
             cost_increase = np.log(length_increase + 1) * 0.2
             revenue_increase = np.log(length_increase + 1) * 0.4
-        elif length_increase < 90 and length_increase >= 30:
+        elif 90 > length_increase >= 30:
             cost_increase = np.log(length_increase + 1) * 0.25
             revenue_increase = np.log(length_increase + 1) * 0.25
         else:
@@ -109,8 +109,7 @@ def calculate_during_effect(data):
 def calculate_the_celebrity_effect(data):
     """
     calculate how the number of celebrity will affect the movie's revenue and cost
-    :param movie_price:
-    :param number_of_celebrity:
+    :param data:
     :return:
     """
     revenue = np.copy(data["revenue"])
@@ -127,7 +126,7 @@ def calculate_the_celebrity_effect(data):
 def is_over_budget(data):
     """
     determine whether movie will be over budget and how it will change the cost and revenue
-    :param movie_price:
+    :param data:
     :return:
     """
     num_over_budget = data[data["cost"] > data["revenue"]].shape[0]
@@ -141,7 +140,7 @@ def is_over_budget(data):
         for i in range(1000):
             revenue_increase = 0
             if revenue[i] < cost[i]:
-                if length[i] <= 120 and length[i] >= 110:
+                if 120 >= length[i] >= 110:
                     revenue_increase += 0.1
                 if celebrity[i] >= 10:
                     revenue_increase += 0.1
@@ -184,6 +183,7 @@ def is_over_budget(data):
 def calculate_filming_time(data):
     """
     calculate how filming time will affect revenue and cost of the movie
+    :param data:
     :return:
     """
     # min spend days define as 30 days
@@ -195,10 +195,10 @@ def calculate_filming_time(data):
         if spend_time_increase < 60:  # log(spend_time_increase)*[0,0.1)
             cost_increase = np.log(spend_time_increase + 1) * 0.05
             revenue_increase = np.log(spend_time_increase + 1) * 0.4
-        elif spend_time_increase < 90 and spend_time_increase >= 60:  # log(spend_time_increase)*[0,0.2)
+        elif 90 > spend_time_increase >= 60:  # log(spend_time_increase)*[0,0.2)
             cost_increase = np.log(spend_time_increase + 1) * 0.25
             revenue_increase = np.log(spend_time_increase + 1) * 0.25
-        elif spend_time_increase < 200 and spend_time_increase >= 90:
+        elif 200 > spend_time_increase >= 90:
             cost_increase = np.log(spend_time_increase + 1) * 0.2
             revenue_increase = np.log(spend_time_increase + 1) * 0.2
         else:
@@ -215,14 +215,14 @@ def calculate_filming_time(data):
 def calculate_dubbing_effect(data):
     """
     calculate how the sound effect affect the revenue and cost of the movie
-    :param is_dubbing:
+    :param data:
     :return:
     """
     is_dubbing = [False for _ in range(1000)]
     revenue = np.copy(data["revenue"])
     cost = np.copy(data["cost"])
     for i in range(1000):
-        if (np.random.randint(0, 2)):
+        if np.random.randint(0, 2):
             is_dubbing[i] = True
             revenue[i] *= (1 + 0.2)
             cost[i] *= (np.random.randint(1, 3) * 0.1 + 1)
@@ -235,8 +235,8 @@ def calculate_dubbing_effect(data):
 def init_data():
     movie_index = [(np.random.randint(0, 1000) % 10) for _ in range(1000)]
 
-    cost_revenut = define_cost_revenue(movie_index)
-    data = get_base_cost_for_movie(movie_index, cost_revenut)
+    cost_revenues = define_cost_revenue(movie_index)
+    data = get_base_cost_for_movie(movie_index, cost_revenues)
     index = ["movie_type", "revenue", "cost"]
     data = pd.DataFrame(data)
     data.columns = index
@@ -252,16 +252,16 @@ def main():
     print("This is the Monte Carlo Simulation for the movie profit!!!")
 
     # Monte Carlo simulation
-    Monte_Carlo_iterater = 100
+    monte_carlo_iterator = 100
 
     verifyHypothesis_1 = []
     verifyHypothesis_2 = []
     verifyHypothesis_3 = []
     verifyHypothesis_4 = []
     verifyHypothesis_5 = []
-    for i in range(Monte_Carlo_iterater):
+    for i in range(monte_carlo_iterator):
         data = init_data()
-        data["revenue-cost"] = data["revenue"] - data["cost"];
+        data["revenue-cost"] = data["revenue"] - data["cost"]
         # verify Hypothesis 1
         verifyHypothesis_1.append(data[data["revenue-cost"] == data["revenue-cost"].max()]["celebrity"].values[0])
 
@@ -282,7 +282,7 @@ def main():
         is_dubbing = data[data["revenue-cost"] == data["revenue-cost"].max()]["is_dubbing"].values[0]
         verifyHypothesis_5.append(is_dubbing)
 
-    x = range(Monte_Carlo_iterater)
+    x = range(monte_carlo_iterator)
     plt.title("Hypothesis 1")
     plt.plot(x, verifyHypothesis_1)
     plt.show()
