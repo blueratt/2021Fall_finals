@@ -16,8 +16,10 @@ We define that any type of movie exceeds 30% of total portfolio will lead to a d
 ### Phase 2 Controls and Experiments:
 We have designed 5 hypotheses to illustrate this project:
    #### 1.	There is a certain number of celebrities in the movie will maximize the profit. 
-   We calculated how the number of celebrities will affect the movie's revenue and cost firstly and then we illustrate that the celebrity value will infect the profit of a movie. And generated the data frame and get the plot as follows: 
+   We calculated how the number of celebrities will affect the movie's revenue and cost firstly and then we illustrate that the celebrity value will infect the profit of a movie. And generated the data frame and get the plot as follows:
+   
  ![alt text](https://github.com/blueratt/2021Fall_finals/blob/main/Hypo%20Graph/Hypothesis1.png)
+ 
    We can see that the lines in the graph are very volatile, so we cannot conclude that celebrity will affect the profit of the movie.
 
    #### 2.	The even distributed type of movie will lead to the maximum of the profit.
