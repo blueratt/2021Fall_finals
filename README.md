@@ -22,6 +22,7 @@ We have designed 5 hypotheses to illustrate this project:
 
    #### 2.	The even distributed type of movie will lead to the maximum of the profit.
    We assume that the movie type can affect the profit of movies and then we illustrate that the different movie type will infect the profit of a movie. And generated the data frame and get the plot as follows: 
+   
  ![alt text](https://github.com/blueratt/2021Fall_finals/blob/main/Hypo%20Graph/Hypothesis2.png)
 
    We can see that the curve fluctuations in the graph of Hypothesis 2 are much smaller than that of Hypothesis 1, so we can draw the conclusion that Hypothesis 2 (the type of movie) will have more impact on the final profit of the movie than Hypothesis 1 (the celebrity of the movie) influence.
