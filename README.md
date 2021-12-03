@@ -7,7 +7,7 @@
 
 
 ### Design our own scenario:
-Since the current year's revenue of a certain type of film company = the previous year's revenue * (1 + revenue growth rate), the revenue growth rate we designed is simulated by Monte Carlo: Run 1000 times to get the expected revenue the max, min and avg. Through observation of historical data and the intuition of decision makers, revenue growth rates and revenue fluctuations can be seen.
+Since the current year's revenue of a certain type of film company = the previous year's revenue * (1 + revenue growth rate), the revenue growth rate we designed is simulated by Monte Carlo: Run 1000 times to get the expected revenue the max, min and average. Through observation of historical data and the intuition of decision makers, revenue growth rates and revenue fluctuations can be seen.
 
 ### Phase 1 Dataset:
 We use the random seeds in NumPy to simulate and determine the base revenue and cost for each genre of movies which have different base revenue and cost.
