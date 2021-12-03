@@ -27,8 +27,9 @@ We have designed 5 hypotheses to illustrate this project:
    We can see that the curve fluctuations in the graph of Hypothesis 2 are much smaller than that of Hypothesis 1, so we can draw the conclusion that Hypothesis 2 (the type of movie) will have more impact on the final profit of the movie than Hypothesis 1 (the celebrity of the movie) influence.
 
    #### 3.	The length of the film is between 110 minutes and 120 minutes will maximize the profit.
-   We assume that the length of movies in minutes can affect the profit of movies. and then we illustrate that the different length of movie will infect the profit of a movie. And generated the data frame and get the plot as follows: 
- ![alt text](https://github.com/blueratt/2021Fall_finals/blob/main/Hypo%20Graph/Hypothesis3.png)\n
+   We assume that the length of movies in minutes can affect the profit of movies. and then we illustrate that the different length of movie will infect the profit of a movie. And generated the data frame and get the plot as follows:
+   
+ ![alt text](https://github.com/blueratt/2021Fall_finals/blob/main/Hypo%20Graph/Hypothesis3.png)
  
    We can see that the picture of Hypothesis 3 has obvious peak fluctuations. It can be seen from the figure that the length of the movie is between 110 minutes and 130 minutes, which can maximize the profit brought by the movie. Therefore, the following conclusions can be drawn: The length of the film is between 110 minutes and 120 minutes will maximize the profit.
 
@@ -37,12 +38,14 @@ We have designed 5 hypotheses to illustrate this project:
    We assume that the spend time of the movie in days can affect the profit of movies. And plot as follows:
 
    We can see that the picture of Hypothesis 4 has obvious peak fluctuations, but all the points are below 90 minutes, so we can draw conclusions based on the information in the picture: The film production (editing time of the movie) costs no longer than 90 days will maximize the profit
- ![alt text](https://github.com/blueratt/2021Fall_finals/blob/main/Hypo%20Graph/Hypothesis4.png)\n
+   
+ ![alt text](https://github.com/blueratt/2021Fall_finals/blob/main/Hypo%20Graph/Hypothesis4.png)
 
    #### 5.  Original voice dubbing of movie actors will also lead to the maximum of the movie.
    We assume that whether the movie is dubbing can affect the profit of movies. And plot as follows:
 
    Since whether it is dubbing is a category variable, there are only values of 0 and 1, so the broken line shown in the figure has great ups and downs. But more points are on 1 instead of 0, so you can get: Original voice dubbing of movie actors will also lead to the maximum of the movie.
+   
  ![alt text](https://github.com/blueratt/2021Fall_finals/blob/main/Hypo%20Graph/Hypothesis5.png)\n
 
 ### Phase 3 Analysis:
