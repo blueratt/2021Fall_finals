@@ -4,7 +4,7 @@
 ## Monte Carlo simulation to maximize the total profit of the entire movie market
 
 ### Author: Shihao Jin, Francis Feng, Yanmeng Xin
-
+ ![alt text](https://github.com/blueratt/2021Fall_finals/blob/main/movie_poster.jpeg)
 
 ### Design our own scenario:
 Since the current year's revenue of a certain type of film company = the previous year's revenue * (1 + revenue growth rate), the revenue growth rate we designed is simulated by Monte Carlo: Run 1000 times to get the expected revenue the max, min and average. Through observation of historical data and the intuition of decision makers, revenue growth rates and revenue fluctuations can be seen.
