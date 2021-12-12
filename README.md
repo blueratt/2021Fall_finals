@@ -60,3 +60,7 @@ We have designed 5 hypotheses to illustrate this project:
  
 
 Reference:
+1. https://numpy.org/doc/stable/reference/random/generated/numpy.random.normal.html
+2. https://pandas.pydata.org/docs/reference/index.html
+3. https://matplotlib.org/stable/index.html
+
