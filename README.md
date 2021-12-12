@@ -63,3 +63,6 @@ Reference:
 1. https://numpy.org/doc/stable/reference/random/generated/numpy.random.normal.html
 2. https://pandas.pydata.org/docs/reference/index.html
 3. https://matplotlib.org/stable/index.html
+4. https://kodify.net/python/math/round-integers/
+5. https://www.investopedia.com/financial-edge/0611/why-movies-cost-so-much-to-make.aspx
+6. https://www.the-numbers.com/movie/budgets
