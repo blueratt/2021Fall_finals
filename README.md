@@ -63,4 +63,5 @@ Reference:
 1. https://numpy.org/doc/stable/reference/random/generated/numpy.random.normal.html
 2. https://pandas.pydata.org/docs/reference/index.html
 3. https://matplotlib.org/stable/index.html
+4. https://docs.python.org/3/library/random.html
 
