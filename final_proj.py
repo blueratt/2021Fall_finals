@@ -78,7 +78,6 @@ def define_cost_revenue(index_list):
     >>> cost = define_cost_revenue([1 for _ in range(70)])
     >>> (cost[1])
     [90, 70]
-    >>> np.random.seed()
     >>> cost = define_cost_revenue([1 for _ in range(30)])
     >>> cost[1][0] > 90
     True
@@ -318,7 +317,7 @@ def get_dubbing_effect(is_dubbing, revenue, cost, i):
     >>> cost_data = [100]
     >>> dubbing = [True]
     >>> get_dubbing_effect(dubbing, revenue_data, cost_data, 0)
-    >>> cost
+    >>> cost_data
     [103.40015720836722]
     """
     np.random.seed(0)
@@ -338,6 +337,7 @@ def init_data():
     initialize all the data
     :return: the initialized data containing all the information
     """
+    np.random.seed(0)
     movie_index = [(np.random.randint(0, 1000) % 10) for _ in range(1000)]
     cost_revenues = define_cost_revenue(movie_index)
     data = get_base_cost_for_movie(movie_index, cost_revenues)
