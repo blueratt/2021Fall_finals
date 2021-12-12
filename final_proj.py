@@ -159,7 +159,7 @@ def calculate_the_celebrity_effect(data):
     #    cost = np.copy(data["cost"])
     celebrity_num = [0 for _ in range(1000)]
     for i in range(1000):
-        celebrity_num[i] = math.ceil(np.random.normal(5, 1.2))  # min_celebrity_num = 0  max_celebrity_num = 20
+        celebrity_num[i] = round(np.random.normal(5, 1))  # min_celebrity_num = 0  max_celebrity_num = 20
         revenue_increase = np.log(celebrity_num[i] + 1) * np.random.rand() * 0.1
         revenue[i] *= (revenue_increase + 1)
     data["revenue"] = revenue
@@ -338,6 +338,8 @@ def init_data():
     :return: the initialized data containing all the information
     """
     np.random.seed(0)
+    # index = [300, 300, 300, 40, 10, 10, 10, 10, 10, 10]
+    # movie_index = [i for i in range(10) for _ in range(index[i])]
     movie_index = [(np.random.randint(0, 1000) % 10) for _ in range(1000)]
     cost_revenues = define_cost_revenue(movie_index)
     data = get_base_cost_for_movie(movie_index, cost_revenues)
@@ -349,101 +351,101 @@ def init_data():
     calculate_filming_time(data)
     calculate_dubbing_effect(data)
     is_over_budget(data)
+    print(data)
     return data
 
 
 def main():
     print("This is the Monte Carlo Simulation for the movie profit!!!")
-    monte_carlo_iterator = eval(input("How many times do you want to run the simulation? (at least 50 times) "))
-    if monte_carlo_iterator < 50:
-        monte_carlo_iterator = 50
-    # self_input = input("Do you want to customize the movie portfolio (y/n)? ")
-    # if self_input.lower().startswith("y"):
-    #     action_type = eval(input("How many action type do you want to have? (0-1000) "))
-    #     comedy_type = eval(input("How many comedy type do you want to have? (0-1000) "))
-    #     drama_type = eval(input("How many drama type do you want to have? (0-1000) "))
-    #     fantasy_type = eval(input("How many fantasy type do you want to have? (0-1000) "))
-    #     horror_type = eval(input("How many horror type do you want to have? (0-1000) "))
-    #     mystery_type = eval(input("How many mystery type do you want to have? (0-1000) "))
-    #     romance_type = eval(input("How many romance type do you want to have? (0-1000) "))
-    #     crime_type = eval(input("How many crime type do you want to have? (0-1000) "))
-    #     animation_type = eval(input("How many animation type do you want to have? (0-1000) "))
-    #     if action_type + comedy_type + drama_type + fantasy_type + horror_type + mystery_type + romance_type + \
-    #             crime_type + animation_type > 1000:
-    #         print("Please make sure you have no more than 1000 movies in total")
-    #     print("the number of thriller type will be determined by the previous entered number")
-    #     thriller_type = 1000 - action_type - comedy_type - drama_type - fantasy_type - horror_type - mystery_type - \
-    #                     romance_type - crime_type - animation_type
-    #     for i in range(action_type):
-    #         movie_index.append(0)
-    #     for i in range(comedy_type):
-    #         movie_index.append(1)
-    #     for i in range(drama_type):
-    #         movie_index.append(2)
-    #     for i in range(fantasy_type):
-    #         movie_index.append(3)
-    #     for i in range(horror_type):
-    #         movie_index.append(4)
-    #     for i in range(mystery_type):
-    #         movie_index.append(5)
-    #     for i in range(romance_type):
-    #         movie_index.append(6)
-    #     for i in range(crime_type):
-    #         movie_index.append(7)
-    #     for i in range(animation_type):
-    #         movie_index.append(8)
-    #     for i in range(thriller_type):
-    #         movie_index.append(9)
-
-    verify_hypothesis_1 = []
-    verify_hypothesis_2 = []
-    verify_hypothesis_3 = []
-    verify_hypothesis_4 = []
-    verify_hypothesis_5 = []
-
-    for i in range(monte_carlo_iterator):
-        data = init_data()
-        data["revenue-cost"] = data["revenue"] - data["cost"]
-        # verify Hypothesis 1
-        verify_hypothesis_1.append(data[data["revenue-cost"] == data["revenue-cost"].max()]["celebrity"].values[0])
-
-        # verify Hypothesis 2
-        hypo2 = data[data["revenue-cost"] == data["revenue-cost"].max()]["movie_type"].values
-        count = data[data["movie_type"] == hypo2[0]].shape[0]
-        verify_hypothesis_2.append(count / 1000)
-
-        # verify Hypothesis 3
-        length = data[data["revenue-cost"] == data["revenue-cost"].max()]["length_per_min"].values[0]
-        verify_hypothesis_3.append(length)
-
-        # verify Hypothesis 4
-        spend = data[data["revenue-cost"] == data["revenue-cost"].max()]["spend_time/days"].values[0]
-        verify_hypothesis_4.append(spend)
-
-        # verify Hypothesis  5
-        is_dubbing = data[data["revenue-cost"] == data["revenue-cost"].max()]["is_dubbing"].values[0]
-        verify_hypothesis_5.append(is_dubbing)
-
-    x = range(monte_carlo_iterator)
-    plt.title("Hypothesis 1")
-    plt.plot(x, verify_hypothesis_1)
+    # monte_carlo_iterator = 100
+    # verify_hypothesis_1 = []
+    # verify_hypothesis_2 = []
+    # verify_hypothesis_3 = []
+    # verify_hypothesis_4 = []
+    # verify_hypothesis_5 = []
+    data = init_data()
+    data["revenue-cost"] = data["revenue"] - data["cost"]
+    y = data["revenue-cost"] / 1000
+    x = data["celebrity"]
+    plt.hist(x, weights=y, bins=7)
+    plt.xlabel("Number of Celebrities")
+    plt.ylabel("Average profit per celebrity")
     plt.show()
 
-    plt.title("Hypothesis 2")
-    plt.plot(x, verify_hypothesis_2)
+    x = data["movie_type"]
+    y = data["revenue-cost"]
+    plt.hist(x, weights=y, bins=10)
+    plt.xlabel("Movie Types")
+    plt.ylabel("Total Movie Profit")
+    plt.title("The total profit of even distribution is {}".format(y.sum()))
     plt.show()
 
-    plt.title("Hypothesis 3")
-    plt.plot(x, verify_hypothesis_3)
+    x = data["length_per_min"]
+    y = data["revenue-cost"]
+    plt.hist(x, weights=y, bins=1000)
+    plt.xlabel("Movie time length")
+    plt.ylabel("movie profit")
+    plt.title("The movie profit and the movie time length")
     plt.show()
 
-    plt.title("Hypothesis 4")
-    plt.plot(x, verify_hypothesis_4)
+    x = data["spend_time/days"]
+    y = data["revenue-cost"]
+    plt.hist(x, weights=y, bins=100)
+    plt.xlabel("Filming days")
+    plt.ylabel("Total Movie Profit")
+    plt.title("The movie profit and the number of movie filming days")
     plt.show()
 
-    plt.title("Hypothesis 5")
-    plt.plot(x, verify_hypothesis_5)
+    x = data["movie_type"]
+    y = data["revenue-cost"]
+    plt.hist(x, weights=y, bins=10)
+    plt.xlabel("Movie Types")
+    plt.ylabel("Total Movie Profit")
+    plt.title("The total profit of having dubbing is {}".format(y.sum()))
     plt.show()
+    # for i in range(monte_carlo_iterator):
+    #     data = init_data()
+    #     data["revenue-cost"] = data["revenue"] - data["cost"]
+    #     # verify Hypothesis 1
+    #     verify_hypothesis_1.append(data[data["revenue-cost"] == data["revenue-cost"].max()]["celebrity"].values[0])
+    #
+    #     # verify Hypothesis 2
+    #     hypo2 = data[data["revenue-cost"] == data["revenue-cost"].max()]["movie_type"].values
+    #     count = data[data["movie_type"] == hypo2[0]].shape[0]
+    #     verify_hypothesis_2.append(count / 1000)
+    #
+    #     # verify Hypothesis 3
+    #     length = data[data["revenue-cost"] == data["revenue-cost"].max()]["length_per_min"].values[0]
+    #     verify_hypothesis_3.append(length)
+    #
+    #     # verify Hypothesis 4
+    #     spend = data[data["revenue-cost"] == data["revenue-cost"].max()]["spend_time/days"].values[0]
+    #     verify_hypothesis_4.append(spend)
+    #
+    #     # verify Hypothesis  5
+    #     is_dubbing = data[data["revenue-cost"] == data["revenue-cost"].max()]["is_dubbing"].values[0]
+    #     verify_hypothesis_5.append(is_dubbing)
+    #
+    # x = range(monte_carlo_iterator)
+    # plt.title("Hypothesis 1")
+    # plt.plot(x, verify_hypothesis_1)
+    # plt.show()
+    #
+    # plt.title("Hypothesis 2")
+    # plt.plot(x, verify_hypothesis_2)
+    # plt.show()
+    #
+    # plt.title("Hypothesis 3")
+    # plt.plot(x, verify_hypothesis_3)
+    # plt.show()
+    #
+    # plt.title("Hypothesis 4")
+    # plt.plot(x, verify_hypothesis_4)
+    # plt.show()
+    #
+    # plt.title("Hypothesis 5")
+    # plt.plot(x, verify_hypothesis_5)
+    # plt.show()
 
 
 if __name__ == '__main__':
