@@ -47,7 +47,7 @@ We have designed 5 hypotheses to illustrate this project:
 
    #### 5.  Original voice dubbing of movie actors will also lead to the maximum of the movie.
    We assume that whether the movie is dubbing can affect the profit of movies. And plot as follows:
- ![alt text](https://github.com/blueratt/2021Fall_finals/blob/main/Hypo%20Graph/Hypothesis5_2.png)
+ ![alt text](https://github.com/blueratt/2021Fall_finals/blob/main/Hypo%20Graph/Hypothesis5.png)
  ![alt text](https://github.com/blueratt/2021Fall_finals/blob/main/Hypo%20Graph/Hypothesis5_1.png)
 
    By comparing the two graphs, we can see that using dubbing can greatly increase the profit
