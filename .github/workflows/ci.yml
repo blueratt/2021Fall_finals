@@ -1,4 +1,3 @@
-# reference: https://github.com/ZohebAbai/python_test_repo/blob/master/.github/workflows/ci.yml
 name: Project Tests
 on:
   push:
@@ -13,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Python 3.8
+      - name: Set up Python 3
         uses: actions/setup-python@v1
         with:
           python-version: 3.8
@@ -22,4 +21,5 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
       - name: Test with pytest
-        run: pytest -vv
+        run: |
+          pytest -vv
