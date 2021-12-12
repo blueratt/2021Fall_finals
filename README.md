@@ -54,9 +54,10 @@ We have designed 5 hypotheses to illustrate this project:
 
 
 ### Phase 3 Analysis:
- The problem solving is very consistent with the reality, and very satisfactory results can be obtained because the Monte Carlo method can truly simulate the actual physical process. According to the results of the discrete graph obtained from the five hypotheses, we can support Hypothesis 5 and Hypothesis 2, that is, the type of movie and whether the movie is dubbing will affect the profit of the movie. And refuse to accept assumptions 1, 3, 4 that the length of the movie, the time spent on the movie, and the Celebrity of the movie will not affect the profit of the movie.
+ The problem solving is very consistent with the reality, and very satisfactory results can be obtained because the Monte Carlo method can truly simulate the actual physical process. According to the results of the discrete graph obtained from the five hypotheses, we can support Hypothesis 5 and Hypothesis 1, that is, the certain number of celebrities and using dubbing will maximize affect the profit of the movie. And refuse to accept assumptions 2, 3, 4 that the length of the movie between 110 and 120, the time spent on filming the movie less than 90, and the evenly distribution of the movie will not maximize the profit of the movie.
  
- 
+ ## Thank you for reading this!
+## Hope you can enjoy your next movie!
 
 Reference:
 1. https://numpy.org/doc/stable/reference/random/generated/numpy.random.normal.html
